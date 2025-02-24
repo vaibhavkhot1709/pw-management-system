@@ -5,6 +5,7 @@ import jakarta.persistence.GeneratedValue;
 import jakarta.persistence.GenerationType;
 import jakarta.persistence.Id;
 import jakarta.persistence.Table;
+import jakarta.validation.constraints.NotNull;
 import lombok.AllArgsConstructor;
 import lombok.Getter;
 import lombok.NoArgsConstructor;
@@ -30,6 +31,8 @@ public class Address {
     private int flatNo;
     
 
+    @NotNull(message = "Building name should not be NULL")
     private String buildingName;
+    @NotNull(message = "PIN Numb should not be NULL")
     private int pinNum;
 }
