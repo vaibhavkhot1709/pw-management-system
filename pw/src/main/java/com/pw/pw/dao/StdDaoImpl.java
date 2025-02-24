@@ -18,7 +18,9 @@ public class StdDaoImpl implements StdDao{
 	StdRepo stdRepo;
 	@Override
 	public Student saveStudent(Student student) {
-		return stdRepo.save(student);
+//		return stdRepo.save(student);
+		
+		return stdRepo.saveAndFlush(student);
 	}
 
 	@Override
