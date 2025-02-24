@@ -23,8 +23,22 @@ public class StdServiceImpl implements StdService{
 
 	@Override
 	public Student getStudentById(int stdId) {
+		
+		List<Integer> stdList = getListOfAllIds();
+		Student stdDel=null;
+		for (Integer id : stdList) {
+			System.out.println(id==stdId);
+	        if (id==stdId) {
+	        	stdDel=daoImpl.getStudentById(stdId);
+	            break;  
+	        }
+	    }
+		if (stdDel==null) {
+	        return null;
+	    }
+		
 		return daoImpl.getStudentById(stdId);
-	}
+		}
 
 	@Override
 	public List<Student> getAllStudent() {
@@ -36,7 +50,6 @@ public class StdServiceImpl implements StdService{
 	@Override
 	public void deletStundetById(int stdId) {
 		List<Integer> stdList = getListOfAllIds();
-		@SuppressWarnings("unused")
 		Student stdDel=null;
 		for (Integer id : stdList) {
 			System.out.println(id==stdId);
@@ -61,6 +74,7 @@ public class StdServiceImpl implements StdService{
 	@Transactional
 	public Student updateStudentById(int stdId, Student newStudent) {
 		
+		 
 		List<Integer> stdList = getListOfAllIds();
 		Student existingStudent = null;
 		
@@ -97,6 +111,9 @@ public class StdServiceImpl implements StdService{
 		
 		return stdL;
 	}
+	
+
+	
 
 
 }
